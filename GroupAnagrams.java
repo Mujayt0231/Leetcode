@@ -42,4 +42,30 @@ public class GroupAnagrams {
         System.out.println(grounpAnagrams(strs1));
     }
 
+    // 09/03/2023
+    public static List<List<String>> groupAnagrams(String[] strs) {
+
+        if (strs == null || strs.length == 0)
+            return new ArrayList<>();
+
+        Map<String, List<String>> hashmap = new HashMap<>();
+
+        for (String string : strs) {
+
+            char[] charArray = string.toCharArray();
+            Arrays.sort(charArray);
+            String sortedString = new String(charArray);
+
+            if (!hashmap.containsKey(sortedString)) {
+                hashmap.put(sortedString, new ArrayList<>());
+
+            }
+
+            hashmap.get(sortedString).add(string);
+
+        }
+
+        return new ArrayList<>(hashmap.values());
+
+    }
 }

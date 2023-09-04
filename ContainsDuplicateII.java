@@ -4,11 +4,10 @@ import java.util.Map;
 public class ContainsDuplicateII {
 
     public static void main(String[] args) {
-        ContainsDuplicateII cd = new ContainsDuplicateII();
-        int[] nums = { 1, 2, 3, 1 };
+        int[] nums = { 1, 0, 1, 1 };
         int k = 3;
 
-        System.out.println(cd.containsNearbyDuplicate(nums, k));
+        System.out.println(containsNearbyDuplicateRecall(nums, k));
     }
 
     // this solution works but time complexity is O(n^2)
@@ -53,6 +52,27 @@ public class ContainsDuplicateII {
             valueToIndex.put(currentNumber, i);
         }
         return false;
+    }
+
+    // 09/03/2023
+    public static boolean containsNearbyDuplicateRecall(int[] nums, int k) {
+
+        if (nums.length <= 1 || nums == null)
+            return false;
+
+        Map<Integer, Integer> hashMap = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+            int currentNumber = nums[i];
+            if (hashMap.containsKey(currentNumber)) {
+                if (Math.abs(hashMap.get(currentNumber) - i) <= k)
+                    return true;
+            }
+            hashMap.put(currentNumber, i);
+        }
+
+        return false;
+
     }
 
 }

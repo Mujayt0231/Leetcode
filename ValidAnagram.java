@@ -114,4 +114,29 @@ public class ValidAnagram {
 
         return true;
     }
+
+    // 09/03/2023
+    public static boolean isAnagramRecall(String s, String t) {
+
+        if (s.length() != t.length())
+            return false;
+
+        Map<Character, Integer> hashMap = new HashMap<>();
+
+        for (char c : s.toCharArray()) {
+            hashMap.put(c, hashMap.getOrDefault(c, 0) + 1);
+        }
+
+        for (char c : t.toCharArray()) {
+            if (!hashMap.containsKey(c) || hashMap.get(c) == 0)
+                return false;
+            hashMap.put(c, hashMap.getOrDefault(c, 0) - 1);
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isAnagramRecall("anagram", "nagaram"));
+    }
+
 }

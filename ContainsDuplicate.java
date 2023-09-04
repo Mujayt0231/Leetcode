@@ -6,7 +6,7 @@ public class ContainsDuplicate {
         int[] nums = { 1, 2, 3, 1 };
         ContainsDuplicate solution = new ContainsDuplicate();
         boolean answer = solution.containsDuplicateNumber(nums);
-        boolean secondAnswer = solution.containsDuplicate(nums);
+        boolean secondAnswer = containsDuplicateRecall(nums);
         System.out.println(answer);
         System.out.println(secondAnswer);
     }
@@ -49,6 +49,26 @@ public class ContainsDuplicate {
             set.add(num);
         }
         return false;
+    }
+
+    // 09/03/2023
+    public static boolean containsDuplicateRecall(int[] nums) {
+
+        if (nums.length <= 1 || nums == null)
+            return false;
+
+        HashSet<Integer> set = new HashSet<>();
+
+        for (int i = 0; i < nums.length; i++) {
+
+            if (set.contains(nums[i]))
+                return true;
+
+            set.add(nums[i]);
+        }
+
+        return false;
+
     }
 
 }

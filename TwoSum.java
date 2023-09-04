@@ -48,9 +48,39 @@ public class TwoSum {
 
     public static void main(String[] args) {
         TwoSum twosum = new TwoSum();
-        int[] nums = { 3, 2, 4 };
-        int target = 6;
-        System.out.println(Arrays.toString(twosum.twoSum(nums, target)));
+        int[] nums = { 2, 7, 11, 15 };
+        int target = 9;
+        System.out.println(Arrays.toString(twosum.twoSumRecall1(nums, target)));
+    }
+
+    // 9/3/2023
+    public int[] twoSumRecall1(int[] nums, int target) {
+
+        /*
+         * for (int i = 0; i < nums.length; i++) {
+         * for (int j = i + 1; j < nums.length - 1; j++) {
+         * if (nums[i] + nums[j] == target)
+         * return new int[] { i, j };
+         * }
+         * }
+         * 
+         * return new int[0];
+         */
+
+        Map<Integer, Integer> hashMap = new HashMap<>();
+
+        for (int i = 0; i < nums.length; i++) {
+
+            int complement = target - nums[i];
+
+            if (hashMap.containsKey(complement))
+                return new int[] { hashMap.get(complement), i };
+
+            hashMap.put(nums[i], i);
+        }
+
+        return new int[0];
+
     }
 
 }
