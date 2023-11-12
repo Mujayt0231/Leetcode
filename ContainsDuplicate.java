@@ -1,4 +1,6 @@
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 public class ContainsDuplicate {
 
@@ -69,6 +71,25 @@ public class ContainsDuplicate {
 
         return false;
 
+    }
+
+    public static boolean containsDup(int[] nums) {
+
+        if (nums.length < 2 || nums == null)
+            return false;
+
+        HashSet<Integer> hashSet = new HashSet<>();
+
+        for (int i = 0; i < nums.length; i++) {
+
+            if (hashSet.contains(nums[i]))
+                return true;
+
+            hashSet.add(nums[i]);
+
+        }
+
+        return false;
     }
 
 }
