@@ -41,6 +41,14 @@ public class GroupAnagrams {
         String[] strs1 = { "eat", "tea", "tan", "ate", "nat", "bat" };
         System.out.println(grounpAnagrams(strs1));
     }
+    // 11/15/2023
+
+    public static List<List<String>> groupAnagrams2(String[] strs) {
+
+        if (strs == null || strs.length == 0)
+            return new ArrayList<>();
+
+    }
 
     // 09/03/2023
     public static List<List<String>> groupAnagrams(String[] strs) {
