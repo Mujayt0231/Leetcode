@@ -38,15 +38,43 @@ public class GroupAnagrams {
     }
 
     public static void main(String[] args) {
-        String[] strs1 = { "eat", "tea", "tan", "ate", "nat", "bat" };
+        String[] strs1 = { "eat", "tea", "tan", "ate", "nat", "bat", "chat", "tat", "att" };
         System.out.println(grounpAnagrams(strs1));
+        System.out.println(groupAnagrams2(strs1));
     }
-    // 11/15/2023
 
+    // 11/15/2023
+    /*
+     * Given an array of strings strs, group the anagrams together. You can return
+     * the answer in any order.
+     * 
+     * An Anagram is a word or phrase formed by rearranging the letters of a
+     * different word or phrase, typically using all the original letters exactly
+     * once.
+     */
     public static List<List<String>> groupAnagrams2(String[] strs) {
 
         if (strs == null || strs.length == 0)
             return new ArrayList<>();
+
+        Map<String, List<String>> hashmap = new HashMap<>();
+
+        for (String string : strs) {
+
+            char[] stringAsCharArr = string.toCharArray();
+            Arrays.sort(stringAsCharArr);
+
+            String charAsString = new String(stringAsCharArr);
+
+            if (!hashmap.containsKey(charAsString)) {
+                hashmap.put(charAsString, new ArrayList<>());
+            }
+
+            hashmap.get(charAsString).add(string);
+
+        }
+
+        return new ArrayList<>(hashmap.values());
 
     }
 
